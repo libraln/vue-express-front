@@ -26,24 +26,27 @@ export default {
   async mounted() {
     const res = await fetch("http://localhost:3000/api/newNum");
     this.newNum = res.json();
-    console.log('hello');
+
+    // fetch("http://localhost:3000/api/newNum")
+    //   .then((response) => response.json())
+    //   .catch((error) => alert(error.message));
   },
-      methods: {
-        async calcNum() {
-            const data = {
-                number: this.number,
-            }
-            const res = await fetch('http://localhost:3000/api/newNum', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            this.number = 0
-            const newN = await res.json()
-            this.newNum = newN
-        }
-    }
+  methods: {
+    async calcNum() {
+      const data = {
+        number: this.number,
+      };
+      const res = await fetch("http://localhost:3000/api/newNum", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      this.number = 0;
+      const newN = await res.json();
+      this.newNum = newN;
+    },
+  },
 };
 </script>
